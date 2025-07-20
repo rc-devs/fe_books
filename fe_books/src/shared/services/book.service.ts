@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Book } from '../models/book';
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +12,19 @@ export class BookService {
 
   private url = 'http://localhost:3000/books'
 
-  createBook(){
+  createBook(): Observable<Book>{
 
   }
 
-  showBook(){
+  showBook(): Observable<Book[]>{
 
   }
 
-  updateBook(){
+  updateBook(): Observable<Book>{
 
   }
 
-  deleteBook(){
+  deleteBook(): Observable<Book>{
     
   }
 }
