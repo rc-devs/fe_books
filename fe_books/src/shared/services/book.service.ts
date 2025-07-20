@@ -12,8 +12,8 @@ export class BookService {
 
   private url = 'http://localhost:3000/books'
 
-  createBook(): Observable<Book>{
-
+  createBook(book: {title: string, author: string, read: boolean}): Observable<Book>{
+    return this.http.post<Book>(this.url, book)
   }
 
   showBook(): Observable<Book[]>{
