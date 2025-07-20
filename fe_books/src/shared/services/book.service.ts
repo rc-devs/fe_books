@@ -16,7 +16,7 @@ export class BookService {
     return this.http.post<Book>(this.url, book)
   }
 
-  showBook(): Observable<Book[]>{
+  showAllBooks(): Observable<Book[]>{
     return this.http.get<Book[]>(this.url)
   }
 
