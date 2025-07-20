@@ -6,4 +6,20 @@ import { Injectable } from '@angular/core';
 export class BookService {
 
   constructor() { }
+
+  createBook(){
+
+  }
+
+  showBook(){
+
+  }
+
+  updateBook(){
+
+  }
+
+  deleteBook(){
+    
+  }
 }
