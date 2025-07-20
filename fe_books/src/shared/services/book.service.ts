@@ -17,7 +17,7 @@ export class BookService {
   }
 
   showBook(): Observable<Book[]>{
-
+    return this.http.get<Book[]>(this.url)
   }
 
   updateBook(): Observable<Book>{
