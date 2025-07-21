@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { BookService } from '../../../shared/services/book.service';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Book } from '../../../shared/models/book';
 
 @Component({
   selector: 'app-book-list',
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.css'
 })
@@ -12,6 +14,11 @@ export class BookListComponent {
   constructor(private bookService: BookService){}
 
   //use reactive form
+  newBook = new FormGroup({
+    title: new FormControl(""),
+    author: new FormControl(""),
+    read: new FormControl(false)
+  })
 
 
   createHandler(){}
