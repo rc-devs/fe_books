@@ -11,7 +11,6 @@ import { Book } from '../../../shared/models/book';
 })
 export class BookListComponent implements OnInit{
   books: WritableSignal<Book[]> = signal<Book[]>([]);
-  foundBook = signal<Book | null>(null);
 
   constructor(private bookService: BookService){}
 
@@ -63,7 +62,7 @@ export class BookListComponent implements OnInit{
     let bookID = Number(this.findSingleBookForm.value.bookID!);
     // this.showAllHandler();
     this.bookService.showBookByID(bookID).subscribe({
-      next: (book) => this.foundBook.set(book)
+      next: (book) => this.books.set([book])
       });
   }
 
