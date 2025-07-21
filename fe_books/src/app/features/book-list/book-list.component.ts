@@ -64,6 +64,7 @@ export class BookListComponent implements OnInit{
     this.bookService.showBookByID(bookID).subscribe({
       next: (book) => this.books.set([book])
       });
+    this.findSingleBookForm.reset();
   }
 
   updateHandler(){}
