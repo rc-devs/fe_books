@@ -29,9 +29,11 @@ export class BookListComponent implements OnInit{
 
   createHandler(book: {title: string, author: string, read: boolean}){
     this.bookService.createBook(book);
+    this.showAllHandler() //reload list (could be problem if many book)
   }
 
   showAllHandler(){
+    console.log("show all fires");
     this.bookService.showAllBooks().subscribe(books => this.books.set(books))
   }
 
