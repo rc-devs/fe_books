@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { BookService } from '../../../shared/services/book.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Book } from '../../../shared/models/book';
@@ -10,7 +10,7 @@ import { Book } from '../../../shared/models/book';
   styleUrl: './book-list.component.css'
 })
 export class BookListComponent implements OnInit{
-  books: Book[] = [];
+  books: WritableSignal<Book[]> = signal<Book[]>([]);
 
   constructor(private bookService: BookService){}
 
@@ -24,7 +24,7 @@ export class BookListComponent implements OnInit{
   book = this.newBook.value;
 
   ngOnInit(): void {
-    this.bookService.showAllBooks().subscribe(books => this.books = books)
+    this.bookService.showAllBooks().subscribe(books => this.books.set(books));
   }
 
   createHandler(book: {title: string, author: string, read: boolean}){
