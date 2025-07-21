@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BookService } from '../../../shared/services/book.service';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Book } from '../../../shared/models/book';
 
 @Component({
@@ -15,8 +15,8 @@ export class BookListComponent {
 
   //use reactive form
   newBook = new FormGroup({
-    title: new FormControl(""),
-    author: new FormControl(""),
+    title: new FormControl("", Validators.required), 
+    author: new FormControl("", Validators.required),
     read: new FormControl(false)
   })
 
