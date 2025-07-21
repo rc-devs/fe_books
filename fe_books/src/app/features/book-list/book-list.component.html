@@ -32,10 +32,26 @@
     } @else {
     <p>Read Status: You have not read this book</p>
     }
-    <button onclick="">Update Book</button>
+    <button onclick="displayUpdateContainer(true)">Update Book</button>
     <button (click)="deleteHandler(b.id, b.title, b.author)" class="danger-button">Delete Book</button>
    </div>
-   
+
+   @if(displayUpdateContainer()){
+    <div class="update-container">
+      <form [formGroup]="updateBookForm" (ngSubmit)="updateHandler()">
+        <label for="title">Title: </label>
+      <input type="text" name="title" [formControl]="updateBookForm.controls.title" placeholder="Enter book title">
+      <label for="Author">Author: </label>
+      <input type="text" name="author" [formControl]="updateBookForm.controls.author" placeholder="Enter book author">
+      <label for="read">Have you read this book? </label>
+      <button type="submit">Submit</button>
+      <button (click)="displayUpdateContainer()">Cancel</button>
+      </form>
+    </div>
+   } @else {
+
+   }
+  
   }
 
 

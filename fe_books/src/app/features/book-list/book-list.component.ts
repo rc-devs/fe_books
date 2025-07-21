@@ -12,6 +12,7 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 })
 export class BookListComponent implements OnInit{
   books: WritableSignal<Book[]> = signal<Book[]>([]);
+  displayUpdateContainer = signal<Boolean>(false);
 
   constructor(private bookService: BookService, private snackBar: MatSnackBar){}
 
@@ -27,8 +28,8 @@ export class BookListComponent implements OnInit{
   })
 
   updateBookForm = new FormGroup({
-    title: new FormControl("", Validators.required), 
-    author: new FormControl("", Validators.required),
+    title: new FormControl(""), 
+    author: new FormControl(""),
     read: new FormControl(false)
   })
 
