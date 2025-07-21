@@ -16,6 +16,7 @@
   <h3>List of Books</h3>
   @for (b of books(); track b.id){
    <div class="book-card">
+    <p>Book ID: {{b.id}}</p>
     <p>Title: {{b.title}}</p>
     <p>Author: {{b.author}}</p>
     @if (b.read){
