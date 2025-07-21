@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../../shared/services/book.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Book } from '../../../shared/models/book';
 
 @Component({
   selector: 'app-book-list',
@@ -8,7 +9,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.css'
 })
-export class BookListComponent {
+export class BookListComponent implements OnInit{
+  books: Book[] = [];
 
   constructor(private bookService: BookService){}
 
@@ -21,6 +23,9 @@ export class BookListComponent {
 
   book = this.newBook.value;
 
+  ngOnInit(): void {
+    this.bookService.showAllBooks().subscribe(books => this.books = books)
+  }
 
   createHandler(book: {title: string, author: string, read: boolean}){
     this.bookService.createBook(book);
