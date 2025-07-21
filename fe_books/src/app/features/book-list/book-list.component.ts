@@ -32,9 +32,14 @@ export class BookListComponent implements OnInit{
       author: this.newBook.value.author!,
       read: this.newBook.value.read!,
     };
-    this.bookService.createBook(book).subscribe();
-    this.showAllHandler(); //reload list (could be problem if many book)
-    this.newBook.reset(); //reset form
+    this.bookService.createBook(book).subscribe({
+      next: (createBook) => {
+        //wait till createbook before reload
+        this.showAllHandler(); //reload list (could be problem if many book)
+        this.newBook.reset(); //reset form
+      }
+    });
+   
   }
 
   showAllHandler(){
