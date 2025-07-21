@@ -20,8 +20,12 @@ export class BookListComponent {
     read: new FormControl(false)
   })
 
+  book = this.newBook.value;
 
-  createHandler(){}
+
+  createHandler(book: {title: string, author: string, read: boolean}){
+    this.bookService.createBook(book);
+  }
 
   showAllHandler(){}
 
