@@ -21,7 +21,7 @@ export class BookListComponent implements OnInit{
     read: new FormControl(false)
   })
 
-  book = this.newBook.value;
+  book = this.newBook.value; //save form inputs for passage to methods
 
   ngOnInit(): void {
     this.bookService.showAllBooks().subscribe(books => this.books.set(books));
