@@ -32,7 +32,7 @@ export class BookListComponent implements OnInit{
   }
 
   showAllHandler(){
-    this.bookService.showAllBooks()
+    this.bookService.showAllBooks().subscribe(books => this.books.set(books))
   }
 
   showBookByIDHandler(){}
