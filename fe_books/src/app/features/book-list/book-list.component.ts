@@ -11,6 +11,7 @@ import { Book } from '../../../shared/models/book';
 })
 export class BookListComponent implements OnInit{
   books: WritableSignal<Book[]> = signal<Book[]>([]);
+  foundBook = signal<Book | null>(null);
 
   constructor(private bookService: BookService){}
 
@@ -59,13 +60,11 @@ export class BookListComponent implements OnInit{
   }
 
   showBookByIDHandler(){
-    let bookID = this.findSingleBookForm.value.bookID!;
-    this.bookService.showBookByID(bookID).subscribe({next: (showBookByID) => {
-            //wait till createbook before reload
-            this.showAllHandler(); //reload list (could be problem if many book)
-            this.newBook.reset(); //reset form
-          }
-        });
+    let bookID = Number(this.findSingleBookForm.value.bookID!);
+    // this.showAllHandler();
+    this.bookService.showBookByID(bookID).subscribe({
+      next: (book) => this.foundBook.set(book)
+      });
   }
 
   updateHandler(){}
@@ -73,8 +72,8 @@ export class BookListComponent implements OnInit{
   deleteHandler(bookID: number, title: string, author: string){
     if (confirm(`Are you sure you want to DELETE book ${bookID}; ${title} by ${author}?`)){
     this.bookService.deleteBook(bookID).subscribe({next: (deleteBook) => {
-            //wait till createbook before reload
-            this.showAllHandler(); //reload list (could be problem if many book)
+            //wait till deletebook before reload
+            this.showAllHandler(); 
             this.newBook.reset(); //reset form
           }
         });
