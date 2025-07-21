@@ -25,6 +25,11 @@ export class BookListComponent implements OnInit{
     bookID: new FormControl(0, Validators.required)
   })
 
+  updateBookForm = new FormGroup({
+    title: new FormControl("", Validators.required), 
+    author: new FormControl("", Validators.required),
+    read: new FormControl(false)
+  })
 
   ngOnInit(): void {
     this.bookService.showAllBooks().subscribe((books) => this.books.set(books));
