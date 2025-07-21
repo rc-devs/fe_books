@@ -31,7 +31,7 @@ export class BookListComponent {
     this.bookService.showAllBooks()
   }
 
-  showOneHandler(){}
+  showBookByIDHandler(){}
 
   updateHandler(){}
 
