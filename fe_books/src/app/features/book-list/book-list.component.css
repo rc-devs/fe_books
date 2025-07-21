@@ -2,3 +2,7 @@
   border: 2px black solid;
   width: 30%;
 }
+
+.danger-button{
+  background-color: rgb(231, 66, 66);
+}
