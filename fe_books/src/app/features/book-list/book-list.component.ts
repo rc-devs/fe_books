@@ -21,15 +21,21 @@ export class BookListComponent implements OnInit{
     read: new FormControl(false)
   })
 
-  book = this.newBook.value; //save form inputs for passage to methods
 
   ngOnInit(): void {
-    this.bookService.showAllBooks().subscribe(books => this.books.set(books));
+    this.bookService.showAllBooks().subscribe((books) => this.books.set(books));
   }
 
-  createHandler(book: {title: string, author: string, read: boolean}){
-    this.bookService.createBook(book);
-    this.showAllHandler() //reload list (could be problem if many book)
+  createHandler() {
+    //save form inputs for passage to methods
+    let book = {
+      title: this.newBook.value.title!,
+      author: this.newBook.value.author!,
+      read: this.newBook.value.read!,
+    };
+    this.bookService.createBook(book).subscribe();
+    this.showAllHandler(); //reload list (could be problem if many book)
+    this.newBook.reset(); //reset form
   }
 
   showAllHandler(){
