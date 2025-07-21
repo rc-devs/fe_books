@@ -51,12 +51,16 @@ export class BookListComponent implements OnInit{
 
   updateHandler(){}
 
-  deleteHandler(bookID: number){
+  deleteHandler(bookID: number, title: string, author: string){
+    if (confirm(`Are you sure you want to DELETE book ${bookID}; ${title} by ${author}?`)){
     this.bookService.deleteBook(bookID).subscribe({next: (deleteBook) => {
-        //wait till createbook before reload
-        this.showAllHandler(); //reload list (could be problem if many book)
-        this.newBook.reset(); //reset form
-      }
-    });
+            //wait till createbook before reload
+            this.showAllHandler(); //reload list (could be problem if many book)
+            this.newBook.reset(); //reset form
+          }
+        });
+    } else {
+      return;
+    }
   }
 }
