@@ -3,7 +3,10 @@
   <form [formGroup]="newBook">
     <input type="string" name="title" [formControl]="newBook.controls.title" placeholder="Enter book title">
     <input type="string" name="author" [formControl]="newBook.controls.author" placeholder="Enter book author">
-    <input type="boolean" name="read" [formControl]="newBook.controls.read" placeholder="Have you read this book?">
+    <select type="boolean" name="read" [formControl]="newBook.controls.read" placeholder="Have you read this book?">
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </select>
   </form>
 
 <h3>Remove Book from List</h3>
