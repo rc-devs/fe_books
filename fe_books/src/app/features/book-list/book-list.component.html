@@ -1,5 +1,11 @@
 
 <h3>Add Book to List</h3>
+  <form [formGroup]="newBook">
+    <input type="string" name="title" [formControl]="newBook.controls.title" placeholder="Enter book title">
+    <input type="string" name="author" [formControl]="newBook.controls.author" placeholder="Enter book author">
+    <input type="boolean" name="read" [formControl]="newBook.controls.read" placeholder="Have you read this book?">
+  </form>
+
 <h3>Remove Book from List</h3>
 <h3>Update existing Book</h3>
 
