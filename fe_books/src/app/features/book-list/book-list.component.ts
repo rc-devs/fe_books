@@ -21,6 +21,11 @@ export class BookListComponent implements OnInit{
     read: new FormControl(false)
   })
 
+   findSingleBookForm = new FormGroup({
+    bookID: new FormControl(0, Validators.required)
+  })
+
+
   ngOnInit(): void {
     this.bookService.showAllBooks().subscribe((books) => this.books.set(books));
   }
@@ -38,6 +43,7 @@ export class BookListComponent implements OnInit{
         this.showAllHandler(); //reload list (could be problem if many book)
         this.newBook.reset(); //reset form
       }
+      // could suscribe to errors i guess
     });
    
   }
@@ -47,7 +53,15 @@ export class BookListComponent implements OnInit{
     this.bookService.showAllBooks().subscribe((books) => this.books.set(books));
   }
 
-  showBookByIDHandler(){}
+  showBookByIDHandler(){
+    let bookID = this.findSingleBookForm.value.bookID!;
+    this.bookService.showBookByID(bookID).subscribe({next: (showBookByID) => {
+            //wait till createbook before reload
+            this.showAllHandler(); //reload list (could be problem if many book)
+            this.newBook.reset(); //reset form
+          }
+        });
+  }
 
   updateHandler(){}
 

@@ -13,6 +13,13 @@
    <button type="submit" [disabled]="!newBook.valid">Submit</button>
   </form>
 
+  <h3>Look up book by ID</h3>
+  <form [formGroup]="findSingleBookForm">
+    <label for="bookID">What is the book you are looking for?</label>
+    <input type="number" name="bookID" [formControl]="findSingleBookForm.controls.bookID" placeholder="0">
+    <button type="submit" (click)="showBookByIDHandler()"></button>
+  </form>
+
   <h3>List of Books</h3>
   @for (b of books(); track b.id){
    <div class="book-card">
