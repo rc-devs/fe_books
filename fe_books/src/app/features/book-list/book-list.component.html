@@ -17,7 +17,7 @@
   <form [formGroup]="findSingleBookForm">
     <label for="bookID">What is the book you are looking for?</label>
     <input type="number" name="bookID" [formControl]="findSingleBookForm.controls.bookID" placeholder="0">
-    <button type="submit" (click)="showBookByIDHandler()"></button>
+    <button type="submit" (click)="showBookByIDHandler()">Find Book</button>
   </form>
 
   <h3>List of Books</h3>
