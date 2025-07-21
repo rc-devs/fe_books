@@ -21,7 +21,6 @@ export class BookListComponent implements OnInit{
     read: new FormControl(false)
   })
 
-
   ngOnInit(): void {
     this.bookService.showAllBooks().subscribe((books) => this.books.set(books));
   }
@@ -40,7 +39,7 @@ export class BookListComponent implements OnInit{
 
   showAllHandler(){
     console.log("show all fires");
-    this.bookService.showAllBooks().subscribe(books => this.books.set(books))
+    this.bookService.showAllBooks().subscribe((books) => this.books.set(books));
   }
 
   showBookByIDHandler(){}
