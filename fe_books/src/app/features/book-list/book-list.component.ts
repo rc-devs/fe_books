@@ -2,17 +2,18 @@ import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { BookService } from '../../../shared/services/book.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Book } from '../../../shared/models/book';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-book-list',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatSnackBarModule],
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.css'
 })
 export class BookListComponent implements OnInit{
   books: WritableSignal<Book[]> = signal<Book[]>([]);
 
-  constructor(private bookService: BookService){}
+  constructor(private bookService: BookService, private snackBar: MatSnackBar){}
 
   //use reactive form
   newBook = new FormGroup({
@@ -64,7 +65,7 @@ export class BookListComponent implements OnInit{
     this.bookService.showBookByID(bookID).subscribe({
       next: (book) => this.books.set([book]),
       error: (err) => {
-        alert('Error fetching book: ' + err.message);
+        this.snackBar.open('Error fetching book: ' + err.message, 'Close', {duration: 5000});
       }
     });
     this.findSingleBookForm.reset();
