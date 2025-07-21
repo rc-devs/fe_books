@@ -1,1 +1,8 @@
-<p>book-list works!</p>
+<div class="book-card">
+  @for (b of books(); track b.id){
+    <p>{{b.title}}</p>
+    <p>{{b.author}}</p>
+    <p>{{b.read}}</p>
+  }
+</div>
+
