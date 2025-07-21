@@ -24,7 +24,7 @@ export class BookListComponent implements OnInit{
   book = this.newBook.value;
 
   ngOnInit(): void {
-    this.bookService.showAllBooks().subscribe(books => this.books.set(books));
+    this.bookService.showAllBooks().subscribe(books => this.books.set(books)), console.log(this.books);
   }
 
   createHandler(book: {title: string, author: string, read: boolean}){
