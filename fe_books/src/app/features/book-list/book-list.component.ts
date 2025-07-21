@@ -62,8 +62,11 @@ export class BookListComponent implements OnInit{
     let bookID = Number(this.findSingleBookForm.value.bookID!);
     // this.showAllHandler();
     this.bookService.showBookByID(bookID).subscribe({
-      next: (book) => this.books.set([book])
-      });
+      next: (book) => this.books.set([book]),
+      error: (err) => {
+        alert('Error fetching book: ' + err.message);
+      }
+    });
     this.findSingleBookForm.reset();
   }
 
