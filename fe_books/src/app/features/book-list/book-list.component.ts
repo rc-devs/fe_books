@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { BookService } from '../../../shared/services/book.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Book } from '../../../shared/models/book';
 
 @Component({
   selector: 'app-book-list',
