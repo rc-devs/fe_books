@@ -20,7 +20,24 @@
     <button type="submit" (click)="showBookByIDHandler()">Find Book</button>
   </form>
 
+  @if (foundBook()){
+    <h3>Book Located</h3>
+    <div class="book-card">
+    <p>Book ID: {{foundBook()?.id}}</p>
+    <p>Title: {{foundBook()?.title}}</p>
+    <p>Author: {{foundBook()?.author}}</p>
+    @if (foundBook()?.read){
+      <p>Read Status: You have read this book!</p>
+    } @else {
+    <p>Read Status: You have not read this book</p>
+    }
+    <button onclick="">Update Book</button>
+    <button (click)="deleteHandler(foundBook()!.id, foundBook()!.title, foundBook()!.author)" class="danger-button">Delete Book</button>
+   </div>
+  }
+
   <h3>List of Books</h3>
+  <button (click)="showAllHandler()">Reload List</button>
   @for (b of books(); track b.id){
    <div class="book-card">
     <p>Book ID: {{b.id}}</p>
