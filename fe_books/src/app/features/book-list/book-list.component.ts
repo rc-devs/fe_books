@@ -27,7 +27,9 @@ export class BookListComponent {
     this.bookService.createBook(book);
   }
 
-  showAllHandler(){}
+  showAllHandler(){
+    this.bookService.showAllBooks()
+  }
 
   showOneHandler(){}
 
