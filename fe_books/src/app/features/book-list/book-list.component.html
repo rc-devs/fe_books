@@ -13,15 +13,20 @@
    <button type="submit" [disabled]="!newBook.valid">Submit</button>
   </form>
 
-<h3>Remove Book from List</h3>
-<h3>Update existing Book</h3>
-
-<div class="book-card">
   <h3>List of Books</h3>
   @for (b of books(); track b.id){
-    <p>{{b.title}}</p>
-    <p>{{b.author}}</p>
-    <p>{{b.read}}</p>
+   <div class="book-card">
+    <p>Title: {{b.title}}</p>
+    <p>Author: {{b.author}}</p>
+    @if (b.read){
+      <p>Read Status: You have read this book!</p>
+    } @else {
+    <p>Read Status: You have not read this book</p>
+    }
+    <button onclick="">Update Book</button>
+    <button onclick="">Delete Book</button>
+   </div>
+   
   }
-</div>
+
 
