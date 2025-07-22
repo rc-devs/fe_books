@@ -1,8 +1,14 @@
 .book-card{
   border: 2px black solid;
-  width: 30%;
+  width: auto;
+  display: inline-block;
+  margin: 1em;
+  padding: 1em;
 }
 
+button {
+  margin-left: 1em;
+}
 .danger-button{
   background-color: rgb(231, 66, 66);
 }
