@@ -50,8 +50,8 @@
           <option value="true">Yes</option>
           <option value="false">No</option>
         </select>
-      <button type="submit">Submit</button>
-      <button (click)="displayUpdateContainer.set(false)">Cancel</button>
+      <button type="submit" (click)="displayUpdateContainer.set(false)">Submit</button>
+      <button (click)="cancelUpdate(b)">Cancel</button>
       </form>
     </div>
    } @else {

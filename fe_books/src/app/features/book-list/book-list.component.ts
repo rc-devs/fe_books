@@ -88,6 +88,18 @@ export class BookListComponent implements OnInit{
       read: book.read
     });
   }
+
+  cancelUpdate(book: Book){
+    this.displayUpdateContainer.set(false)
+
+    //reset to original values
+    this.updateBookForm.patchValue({
+      id: book.id,
+      title: book.title,
+      author: book.author,
+      read: book.read
+    });
+  }
   
   updateHandler(){
     let book = {
