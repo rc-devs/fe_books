@@ -28,6 +28,7 @@ export class BookListComponent implements OnInit{
   })
 
   updateBookForm = new FormGroup({
+    id: new FormControl(0),
     title: new FormControl(""), 
     author: new FormControl(""),
     read: new FormControl(false)
@@ -72,7 +73,22 @@ export class BookListComponent implements OnInit{
     this.findSingleBookForm.reset();
   }
 
-  updateHandler(){}
+  updateHandler(){
+    let book = {
+      id: this.updateBookForm.value.id!,
+      title: this.updateBookForm.value.title!,
+      author: this.updateBookForm.value.author!,
+      read: this.updateBookForm.value.read!,
+    };
+    this.bookService.updateBook(book).subscribe({
+      next: (updateBook) => {
+        //wait till updateBook before reload
+        this.showAllHandler(); //reload list (could be problem if many book)
+        this.updateBookForm.reset(); //reset form
+      }
+      // could suscribe to errors i guess
+    });
+  }
 
   deleteHandler(bookID: number, title: string, author: string){
     if (confirm(`Are you sure you want to DELETE book ${bookID}; ${title} by ${author}?`)){

@@ -39,7 +39,9 @@
    @if(displayUpdateContainer()){
     <div class="update-container">
       <form [formGroup]="updateBookForm" (ngSubmit)="updateHandler()">
-        <label for="title">Title: </label>
+      <label for="id">ID: </label>
+      <input type="number" value="{{b.id}}"> {{b.id}} <!-- this is not save, user can edit -->
+      <label for="title">Title: </label>
       <input type="text" name="title" [formControl]="updateBookForm.controls.title" placeholder="Enter book title">
       <label for="Author">Author: </label>
       <input type="text" name="author" [formControl]="updateBookForm.controls.author" placeholder="Enter book author">
