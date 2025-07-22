@@ -112,6 +112,7 @@ export class BookListComponent implements OnInit{
       next: (updateBook) => {
         //wait till updateBook before reload
         this.showAllHandler(); //reload list (could be problem if many book)
+        this.displayUpdateContainer.set(false)
         this.updateBookForm.reset(); //reset form
       }
       // could suscribe to errors i guess
