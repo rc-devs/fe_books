@@ -44,6 +44,10 @@
       <label for="Author">Author: </label>
       <input type="text" name="author" [formControl]="updateBookForm.controls.author" placeholder="Enter book author">
       <label for="read">Have you read this book? </label>
+      <select type="boolean" name="read" [formControl]="updateBookForm.controls.read" >
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
       <button type="submit">Submit</button>
       <button (click)="displayUpdateContainer.set(false)">Cancel</button>
       </form>
