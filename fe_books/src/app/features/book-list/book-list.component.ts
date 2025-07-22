@@ -13,6 +13,7 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 export class BookListComponent implements OnInit{
   books: WritableSignal<Book[]> = signal<Book[]>([]);
   displayUpdateContainer = signal<Boolean>(false);
+  selectedBook = signal<Book | null>(null);
 
   constructor(private bookService: BookService, private snackBar: MatSnackBar){}
 
@@ -66,7 +67,6 @@ export class BookListComponent implements OnInit{
 
   showBookByIDHandler(){
     let bookID = Number(this.findSingleBookForm.value.bookID!);
-    // this.showAllHandler();
     this.bookService.showBookByID(bookID).subscribe({
       next: (book) => this.books.set([book]),
       error: (err) => {
@@ -76,6 +76,19 @@ export class BookListComponent implements OnInit{
     this.findSingleBookForm.reset();
   }
 
+    selectBookForUpdate(book: Book) {
+    this.selectedBook.set(book);
+    this.displayUpdateContainer.set(true);
+    
+    // populate form with data from selected book
+    this.updateBookForm.patchValue({
+      id: book.id,
+      title: book.title,
+      author: book.author,
+      read: book.read
+    });
+  }
+  
   updateHandler(){
     let book = {
       id: this.updateBookForm.value.id!,
