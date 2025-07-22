@@ -28,7 +28,7 @@ export class BookListComponent implements OnInit{
   })
 
   updateBookForm = new FormGroup({
-    id: new FormControl(0),
+    id: new FormControl(0, Validators.required),
     title: new FormControl(""), 
     author: new FormControl(""),
     read: new FormControl(false)
@@ -39,6 +39,8 @@ export class BookListComponent implements OnInit{
   }
 
   createHandler() {
+    console.log('createhandler fires');
+    
     //save form inputs for passage to methods
     let book = {
       title: this.newBook.value.title!,
@@ -50,6 +52,7 @@ export class BookListComponent implements OnInit{
         //wait till createbook before reload
         this.showAllHandler(); //reload list (could be problem if many book)
         this.newBook.reset(); //reset form
+        this.displayUpdateContainer.set(false)
       }
       // could suscribe to errors i guess
     });

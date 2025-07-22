@@ -40,7 +40,7 @@
     <div class="update-container">
       <form [formGroup]="updateBookForm" (ngSubmit)="updateHandler()">
       <label for="id">ID: </label>
-      <input type="number" value="{{b.id}}"> {{b.id}} <!-- this is not save, user can edit -->
+      <input type="number" name="id" [formControl]="updateBookForm.controls.id"> 
       <label for="title">Title: </label>
       <input type="text" name="title" [formControl]="updateBookForm.controls.title" placeholder="Enter book title">
       <label for="Author">Author: </label>
