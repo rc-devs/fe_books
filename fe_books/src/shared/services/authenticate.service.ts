@@ -6,4 +6,12 @@ import { Injectable } from '@angular/core';
 export class AuthenticateService {
 
   constructor() { }
+
+  login(){}
+
+  getToken(){}
+
+  isLoggedIn(){}
+
+  logout(){}
 }
