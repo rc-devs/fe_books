@@ -18,7 +18,10 @@ export class AuthenticateService {
     })
   }
 
-  getToken(){}
+  getToken(token: string){
+    localStorage.setItem('token', token);
+    this.tokenSubject.next(token)
+  }
 
   isLoggedIn(){}
 
