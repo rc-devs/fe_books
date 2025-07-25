@@ -1,5 +1,5 @@
-<app-login></app-login>
-<!-- use @if for conditional display of logout button if loggedout -->
- <!-- app-logout -->
-
-<router-outlet></router-outlet>
+@if(authService.isLoggedIn()){
+  <app-logout></app-logout>
+} @else {
+  <app-login></app-login>
+}
