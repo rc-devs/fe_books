@@ -27,7 +27,9 @@ export class AuthenticateService {
     return localStorage.getItem('token');
   }
 
-  isLoggedIn(){}
+  isLoggedIn(){
+    return !!this.getToken() // !! converts to a boolean wowzers
+  }
 
   logout(){}
 }
