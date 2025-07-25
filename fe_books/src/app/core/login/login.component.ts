@@ -24,7 +24,7 @@ export class LoginComponent {
       next: (res: any) => {
         console.log('Logged in with token', res.token) //FOR DEVELOPMENT ONLY
         this.authService.setToken(res.token); // pass response token to authservice method
-        // this.router.navigate(['/book-list']) //currently not a route
+        this.router.navigate(['/book-list']) //currently not a route
       },
       error: (error: any) => {
         console.error('Login error', error)
