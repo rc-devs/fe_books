@@ -18,7 +18,7 @@ export class AuthenticateService {
     })
   }
 
-  getToken(token: string){
+  setToken(token: string){
     localStorage.setItem('token', token);
     this.tokenSubject.next(token)
   }
