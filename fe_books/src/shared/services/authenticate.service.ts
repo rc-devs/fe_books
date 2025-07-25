@@ -31,5 +31,9 @@ export class AuthenticateService {
     return !!this.getToken() // !! converts to a boolean wowzers
   }
 
-  logout(){}
+  logout(){
+    localStorage.removeItem('token');
+		this.tokenSubject.next(null);
+		this.router.navigate(['/login'])
+  }
 }
