@@ -23,6 +23,10 @@ export class AuthenticateService {
     this.tokenSubject.next(token)
   }
 
+  getToken(){
+    return localStorage.getItem('token');
+  }
+
   isLoggedIn(){}
 
   logout(){}
