@@ -1,1 +1,7 @@
-<p>registration works!</p>
+<form [formGroup]="registrationForm" (ngSubmit)="registrationHandler()">
+  <label for="username">Username</label>
+    <input type="text" [formControl]="registrationForm.controls.username">
+  <label for="password">Password</label>
+    <input type="password" [formControl]="registrationForm.controls.password">
+<button type="submit">Login</button>
+</form>
