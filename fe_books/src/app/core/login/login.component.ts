@@ -18,4 +18,17 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required])
   });
 
+
+  loginHandler(){
+    this.authService.login(this.loginForm.value.username!, this.loginForm.value.password!).subscribe({
+      next: (res: any) => {
+        console.log('Logged in with token', res.token) //FOR DEVELOPMENT ONLY
+        this.authService.setToken(res.token); // pass response token to authservice method
+        // this.router.navigate(['/book-list']) //currently not a route
+      },
+      error: (error: any) => {
+        console.error('Login error', error)
+      }
+    })
+  }
 }
