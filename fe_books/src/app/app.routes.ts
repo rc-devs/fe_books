@@ -4,9 +4,21 @@ import { noAuthGuard } from '../shared/guards/no-auth.guard';
 
 export const routes: Routes = [
   {
+  path: 'navbar',
+  loadComponent: () => import('./core/navbar/navbar.component').then((c) => c.NavbarComponent),
+  canActivate: [noAuthGuard],
+  children: [
+      {
     path: 'login',
     loadComponent: () => import('./core/login/login.component').then((c) => c.LoginComponent),
     canActivate: [noAuthGuard] 
+      },
+      {
+    path: 'logout',
+    loadComponent: () => import('./core/logout/logout.component').then((c) => c.LogoutComponent),
+    canActivate: [authGuard] 
+      },
+    ]
   },
   {
     path: 'book-list',
