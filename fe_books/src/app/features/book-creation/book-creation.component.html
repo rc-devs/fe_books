@@ -1,0 +1,13 @@
+<h3>Add Book to List</h3>
+  <form [formGroup]="newBook" (ngSubmit)="createHandler()">
+    <label for="title">Title: </label>
+    <input type="text" name="title" [formControl]="newBook.controls.title" placeholder="Enter book title">
+    <label for="Author">Author: </label>
+    <input type="text" name="author" [formControl]="newBook.controls.author" placeholder="Enter book author">
+    <label for="read">Have you read this book? </label>
+    <select type="boolean" name="read" [formControl]="newBook.controls.read" >
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </select>
+   <button type="submit" [disabled]="!newBook.valid">Submit</button>
+  </form>

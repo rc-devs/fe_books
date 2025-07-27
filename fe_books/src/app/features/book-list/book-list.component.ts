@@ -3,10 +3,11 @@ import { BookService } from '../../../shared/services/book.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Book } from '../../../shared/models/book';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-book-list',
-  imports: [ReactiveFormsModule, MatSnackBarModule],
+  imports: [ReactiveFormsModule, MatSnackBarModule, RouterModule],
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.css'
 })
@@ -18,12 +19,6 @@ export class BookListComponent implements OnInit{
   constructor(private bookService: BookService, private snackBar: MatSnackBar){}
 
   //use reactive form
-  newBook = new FormGroup({
-    title: new FormControl("", Validators.required), 
-    author: new FormControl("", Validators.required),
-    read: new FormControl(false)
-  })
-
    findSingleBookForm = new FormGroup({
     bookID: new FormControl(0, Validators.required)
   })
@@ -37,27 +32,6 @@ export class BookListComponent implements OnInit{
 
   ngOnInit(): void {
     this.bookService.showAllBooks().subscribe((books) => this.books.set(books));
-  }
-
-  createHandler() {
-    console.log('createhandler fires');
-    
-    //save form inputs for passage to methods
-    let book = {
-      title: this.newBook.value.title!,
-      author: this.newBook.value.author!,
-      read: this.newBook.value.read!,
-    };
-    this.bookService.createBook(book).subscribe({
-      next: (createBook) => {
-        //wait till createbook before reload
-        this.showAllHandler(); //reload list (could be problem if many book)
-        this.newBook.reset(); //reset form
-        this.displayUpdateContainer.set(false)
-      }
-      // could suscribe to errors i guess
-    });
-   
   }
 
   showAllHandler(){
@@ -124,7 +98,6 @@ export class BookListComponent implements OnInit{
     this.bookService.deleteBook(bookID).subscribe({next: (deleteBook) => {
             //wait till deletebook before reload
             this.showAllHandler(); 
-            this.newBook.reset(); //reset form
           }
         });
     } else {
