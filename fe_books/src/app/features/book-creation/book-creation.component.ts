@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BookService } from '../../../shared/services/book.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-creation',
@@ -10,7 +11,7 @@ import { BookService } from '../../../shared/services/book.service';
 })
 export class BookCreationComponent {
   
-  constructor(private bookService: BookService){}
+  constructor(private bookService: BookService, private router:Router){}
 
   newBook = new FormGroup({
     title: new FormControl("", Validators.required), 
@@ -32,6 +33,7 @@ export class BookCreationComponent {
           //wait till createbook before reload
           this.bookService.showAllBooks; //reload list (could be problem if many book)
           this.newBook.reset(); //reset form
+          this.router.navigate(['/book-list']);
         }
         // could suscribe to errors i guess
       });

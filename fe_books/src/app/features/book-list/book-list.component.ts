@@ -3,10 +3,11 @@ import { BookService } from '../../../shared/services/book.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Book } from '../../../shared/models/book';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-book-list',
-  imports: [ReactiveFormsModule, MatSnackBarModule],
+  imports: [ReactiveFormsModule, MatSnackBarModule, RouterModule],
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.css'
 })
