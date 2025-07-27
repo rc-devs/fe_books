@@ -1,1 +1,9 @@
-<p>signup works!</p>
+<form [formGroup]="signUpForm" (ngSubmit)="signUpHandler()">
+  <label for="username">Enter your desired Username!</label>
+  <input type="text" [formControl]="signUpForm.controls.username">
+  <label for="password">Enter your password</label>
+  <input type="text" [formControl]="signUpForm.controls.password">
+  <label for="password_confirmation">Re-enter your password</label>
+  <input type="text" [formControl]="signUpForm.controls.password_confirmation">
+  <button type="submit">Sign Me Up!</button>
+</form>
