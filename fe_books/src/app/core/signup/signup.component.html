@@ -5,5 +5,5 @@
   <input type="text" [formControl]="signUpForm.controls.password">
   <label for="password_confirmation">Re-enter your password</label>
   <input type="text" [formControl]="signUpForm.controls.password_confirmation">
-  <button type="submit">Sign Me Up!</button>
+  <button type="submit" [disabled]="!signUpForm.valid">Sign Me Up!</button>
 </form>
