@@ -35,8 +35,7 @@ export class BookCreationComponent {
           //wait till createbook before reload
           this.bookService.showAllBooks; //reload list (could be problem if many book)
           this.newBook.reset(); //reset form
-          this.router.navigate(['/book-list']); //remove once nav button to index/booklist added
-          this.snackBar.open(`${book.title} by ${book.author} has been successfully added to your list.`, 'Close')
+          this.snackBar.open(`${book.title} by ${book.author} has been successfully added to your list.`, 'Close', {duration: 5000})
         }
         // could suscribe to errors i guess
       });
