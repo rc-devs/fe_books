@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { LogoutComponent } from '../logout/logout.component';
