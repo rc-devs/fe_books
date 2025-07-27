@@ -20,18 +20,30 @@ export class BookService {
   }
 
   showAllBooks(): Observable<Book[]>{
-    return this.http.get<Book[]>(this.url)
+    const token = localStorage.getItem('token')
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<Book[]>(this.url, { headers })
   }
 
   showBookByID(id: number): Observable<Book>{
-    return this.http.get<Book>(`${this.url}/${id}`)
+    const token = localStorage.getItem('token')
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<Book>(`${this.url}/${id}`, { headers })
   }
 
   updateBook(book: Book): Observable<Book>{
-    return this.http.put<Book>(`${this.url}/${book.id}`, book)
+    const token = localStorage.getItem('token')
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.put<Book>(`${this.url}/${book.id}`, book, { headers })
   }
 
   deleteBook(id: number): Observable<Book>{
-    return this.http.delete<Book>(`${this.url}/${id}`)
+    const token = localStorage.getItem('token')
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.delete<Book>(`${this.url}/${id}`, { headers })
   }
 }
