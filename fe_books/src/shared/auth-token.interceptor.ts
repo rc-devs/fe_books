@@ -5,6 +5,11 @@ import { AuthenticateService } from './services/authenticate.service';
 export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthenticateService);
   const authToken = authService.getToken();
-  
-  return next(req);
+
+  const authReq = authToken
+    ? req.clone({
+      headers: req.headers.set('Authorization', `Bearer ${authToken}`)
+    })
+    :req
+  return next(authReq);
 };
