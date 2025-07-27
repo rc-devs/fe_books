@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticateService } from '../../../shared/services/authenticate.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,7 @@ import { AuthenticateService } from '../../../shared/services/authenticate.servi
 })
 export class SignupComponent {
 
-  constructor(private authService: AuthenticateService){}
+  constructor(private authService: AuthenticateService, private router:Router){}
 
   signUpForm = new FormGroup({
     username: new FormControl("", [Validators.required]),
@@ -19,6 +20,14 @@ export class SignupComponent {
   })
 
   signUpHandler(){
-    this.authService.signUp(this.signUpForm.value.username!, this.signUpForm.value.password!, this.signUpForm.value.password_confirmation!).subscribe()
+    this.authService.signUp(this.signUpForm.value.username!, this.signUpForm.value.password!, this.signUpForm.value.password_confirmation!).subscribe({
+      next: (res: any) => {
+        console.log('Sign up success')
+        this.router.navigate(['/login']) //currently not a route
+      },
+      error: (error: any) => {
+        console.error('Sign up error', error)
+      }
+    })
   }
 }
