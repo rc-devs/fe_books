@@ -30,4 +30,9 @@ export const routes: Routes = [
     loadComponent: () => import('./features/book-creation/book-creation.component').then((c) => c.BookCreationComponent),
     canActivate: [authGuard]
   },
+   {
+    path: 'sign-up',
+    loadComponent: () => import('./core/signup/signup.component').then((c) => c.SignupComponent),
+    canActivate: [authGuard]
+  },
 ];
