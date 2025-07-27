@@ -3,5 +3,9 @@
   <button [routerLink]="['/book-creation']"> Create Book</button>
   <button [routerLink]="['/book-list']"> Your Books </button>
 } @else {
+  <h3>Book List Login</h3>
   <app-login></app-login>
+  
+  <h4>Don't have a login? Sign Up Below!</h4>
+  <app-signup></app-signup>
 }
