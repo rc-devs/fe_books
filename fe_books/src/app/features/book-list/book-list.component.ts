@@ -31,12 +31,17 @@ export class BookListComponent implements OnInit{
   })
 
   ngOnInit(): void {
-    this.bookService.showAllBooks().subscribe((books) => this.books.set(books));
+    this.bookService.showMyBooks().subscribe((books) => this.books.set(books));
   }
 
   showAllHandler(){
     console.log("show all fires");
     this.bookService.showAllBooks().subscribe((books) => this.books.set(books));
+  }
+
+  showMyBooksHandler(){
+    console.log("show my books fires");
+    this.bookService.showMyBooks().subscribe((books) => this.books.set(books))
   }
 
   showBookByIDHandler(){
