@@ -5,3 +5,11 @@
     <input type="password" [formControl]="loginForm.controls.password">
 <button type="submit">Login</button>
 </form>
+
+<button (click)="displaySignUp.set(true)"> Sign Up Here!</button>
+
+@if(!displaySignUp()){
+ 
+} @else {
+<app-signup></app-signup>
+}
