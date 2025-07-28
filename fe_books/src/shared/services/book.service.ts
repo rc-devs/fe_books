@@ -20,6 +20,10 @@ export class BookService {
     return this.http.get<Book[]>(this.url)
   }
 
+  showMyBooks(): Observable<Book[]>{
+    return this.http.get<Book[]>('http://localhost:3000/books/my_books')
+  }
+
   showBookByID(id: number): Observable<Book>{
     return this.http.get<Book>(`${this.url}/${id}`)
   }
