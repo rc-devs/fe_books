@@ -20,7 +20,6 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required])
   });
 
-
   loginHandler(){
     this.authService.login(this.loginForm.value.username!, this.loginForm.value.password!).subscribe({
       next: (res: any) => {
@@ -32,5 +31,9 @@ export class LoginComponent {
         console.error('Login error', error)
       }
     })
+  }
+
+  toggleSignUp(){
+    this.displaySignUp.set(!this.displaySignUp())
   }
 }
