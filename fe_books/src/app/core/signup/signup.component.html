@@ -2,8 +2,8 @@
   <label for="username">Enter your desired Username!</label>
   <input type="text" [formControl]="signUpForm.controls.username">
   <label for="password">Enter your password</label>
-  <input type="text" [formControl]="signUpForm.controls.password">
+  <input type="password" [formControl]="signUpForm.controls.password">
   <label for="password_confirmation">Re-enter your password</label>
-  <input type="text" [formControl]="signUpForm.controls.password_confirmation">
+  <input type="password" [formControl]="signUpForm.controls.password_confirmation">
   <button type="submit" [disabled]="!signUpForm.valid">Sign Me Up!</button>
 </form>

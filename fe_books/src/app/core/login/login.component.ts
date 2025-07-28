@@ -22,11 +22,11 @@ export class LoginComponent {
   loginHandler(){
     this.authService.login(this.loginForm.value.username!, this.loginForm.value.password!).subscribe({
       next: (res: any) => {
-        console.log('Logged in with token', res.token) //FOR DEVELOPMENT ONLY
         this.authService.setToken(res.token); // pass response token to authservice method
         this.router.navigate(['/book-list']) //currently not a route
       },
       error: (error: any) => {
+        alert("Login error. Ensure you are signed up and are using a valid username and password.")
         console.error('Login error', error)
       }
     })

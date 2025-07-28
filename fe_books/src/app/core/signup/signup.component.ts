@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthenticateService } from '../../../shared/services/authenticate.service';
 import { Router, RouterLink, RouterModule } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,7 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
 })
 export class SignupComponent {
 
-  constructor(private authService: AuthenticateService, private router:Router){}
+  constructor(private authService: AuthenticateService, private router:Router, private matSnackBar: MatSnackBar){}
 
   signUpForm = new FormGroup({
     username: new FormControl("", [Validators.required]),
@@ -22,10 +23,11 @@ export class SignupComponent {
   signUpHandler(){
     this.authService.signUp(this.signUpForm.value.username!, this.signUpForm.value.password!, this.signUpForm.value.password_confirmation!).subscribe({
       next: (res: any) => {
-        console.log('Sign up success')
-        this.router.navigate(['/login']) //currently not a route
+        this.matSnackBar.open("Sign-up successful! You may now use your login credentials!", 'Close')
+        this.signUpForm.reset()
       },
       error: (error: any) => {
+        this.matSnackBar.open("There was some error during sign-up. Ensure your passwords are matching, and try again.", 'Close')
         console.error('Sign up error', error)
       }
     })
