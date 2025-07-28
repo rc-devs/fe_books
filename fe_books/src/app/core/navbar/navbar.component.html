@@ -1,7 +1,7 @@
 @if(authService.isLoggedIn()){
   <app-logout></app-logout>
-  <button [routerLink]="['/book-creation']"> Create Book</button>
   <button [routerLink]="['/book-list']"> Your Books </button>
+  <button [routerLink]="['/book-creation']"> Create Book</button>
 } @else {
   <h3>Book List Login</h3>
   <app-login></app-login>
