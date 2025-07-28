@@ -5,8 +5,9 @@
     <button type="submit" (click)="showBookByIDHandler()">Find Book</button>
   </form>
 
-  <h3>List of Books</h3>
-  <button (click)="showAllHandler()">Reload List</button>
+    <!-- display user's books -->
+    <h3>List of Books</h3>
+  <button (click)="showMyBooksHandler()">Reload List</button>
   <br>
   @for (b of books(); track b.id){
    <div class="book-card">
@@ -21,7 +22,6 @@
     <button (click)="selectBookForUpdate(b)">Update Book</button>
     <button (click)="deleteHandler(b.id, b.title, b.author)" class="danger-button">Delete Book</button>
    </div>
-
    @if(displayUpdateContainer() && selectedBook()?.id === b.id){
     <div class="update-container">
       <form [formGroup]="updateBookForm" (ngSubmit)="updateHandler()">
@@ -44,25 +44,6 @@
 
    }
 
-  }
-
-     <!-- display user's books -->
-    <h3>List of Books</h3>
-  <button (click)="showMyBooksHandler()">Reload List</button>
-  <br>
-  @for (b of books(); track b.id){
-   <div class="book-card">
-    <p>Book ID: {{b.id}}</p>
-    <p>Title: {{b.title}}</p>
-    <p>Author: {{b.author}}</p>
-    @if (b.read){
-      <p>Read Status: You have read this book!</p>
-    } @else {
-    <p>Read Status: You have not read this book</p>
-    }
-    <button (click)="selectBookForUpdate(b)">Update Book</button>
-    <button (click)="deleteHandler(b.id, b.title, b.author)" class="danger-button">Delete Book</button>
-   </div>
   }
 
 

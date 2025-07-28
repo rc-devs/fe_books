@@ -34,10 +34,10 @@ export class BookListComponent implements OnInit{
     this.bookService.showMyBooks().subscribe((books) => this.books.set(books));
   }
 
-  showAllHandler(){
+  /* showAllHandler(){
     console.log("show all fires");
     this.bookService.showAllBooks().subscribe((books) => this.books.set(books));
-  }
+  } */
 
   showMyBooksHandler(){
     console.log("show my books fires");
@@ -90,7 +90,7 @@ export class BookListComponent implements OnInit{
     this.bookService.updateBook(book).subscribe({
       next: (updateBook) => {
         //wait till updateBook before reload
-        this.showAllHandler(); //reload list (could be problem if many book)
+        this.showMyBooksHandler(); //reload list (could be problem if many book)
         this.displayUpdateContainer.set(false)
         this.updateBookForm.reset(); //reset form
       }
@@ -102,7 +102,7 @@ export class BookListComponent implements OnInit{
     if (confirm(`Are you sure you want to DELETE book ${bookID}; ${title} by ${author}?`)){
     this.bookService.deleteBook(bookID).subscribe({next: (deleteBook) => {
             //wait till deletebook before reload
-            this.showAllHandler(); 
+            this.showMyBooksHandler(); 
           }
         });
     } else {
