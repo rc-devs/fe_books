@@ -1,4 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #D8E2DC;
+  color: #2E2E2E,
+}
+
+.book-card{
+  border: 2px #A3B18A solid;
+  width: auto;
+  display: inline-block;
+  margin: 1em;
+  padding: 1em;
+  background-color: #F1F3F2;
+}
+
+button {
+  margin-left: 1em;
+  background-color: #679767;
+}
+
+button:hover{
+  background-color: #70a070;
+}
+
+.danger-button{
+  background-color: #F4A261;
+  border: 2px #aa6b37 solid;
+}
+
+.danger-button:hover{
+  background-color: 	#a1622e;
+}
+
+.edit-button{
+  background-color: #78b5b9;
+  border: 2px #324e50 solid;
+}
+
+.edit-button:hover{
+  background-color: #577e81
+}
+
+input{
+  background-color: #F1F3F2;
+}
