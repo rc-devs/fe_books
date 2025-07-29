@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthenticateService } from '../../../shared/services/authenticate.service';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
+import { SignupComponent } from '../signup/signup.component';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, SignupComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  displaySignUp = signal<Boolean>(false);
 
   constructor(private authService: AuthenticateService, private router: Router){}
 
@@ -17,7 +19,6 @@ export class LoginComponent {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required])
   });
-
 
   loginHandler(){
     this.authService.login(this.loginForm.value.username!, this.loginForm.value.password!).subscribe({
@@ -30,5 +31,9 @@ export class LoginComponent {
         console.error('Login error', error)
       }
     })
+  }
+
+  toggleSignUp(){
+    this.displaySignUp.set(!this.displaySignUp())
   }
 }

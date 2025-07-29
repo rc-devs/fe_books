@@ -19,8 +19,8 @@
     } @else {
     <p>Read Status: You have not read this book</p>
     }
-    <button (click)="selectBookForUpdate(b)">Update Book</button>
-    <button (click)="deleteHandler(b.id, b.title, b.author)" class="danger-button">Delete Book</button>
+    <button class="edit-button" (click)="selectBookForUpdate(b)">Update Book</button>
+    <button class="danger-button" (click)="deleteHandler(b.id, b.title, b.author)" >Delete Book</button>
    </div>
    @if(displayUpdateContainer() && selectedBook()?.id === b.id){
     <div class="update-container">
@@ -36,8 +36,8 @@
           <option value="true">Yes</option>
           <option value="false">No</option>
         </select>
-      <button type="submit" >Submit</button>
-      <button (click)="cancelUpdate(b)">Cancel</button>
+      <button class="edit-button" type="submit" >Submit</button>
+      <button class="danger-button" (click)="cancelUpdate(b)">Cancel</button>
       </form>
     </div>
    } @else {

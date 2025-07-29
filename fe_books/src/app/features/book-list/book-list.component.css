@@ -1,14 +1,16 @@
-.book-card{
-  border: 2px black solid;
+/* .book-card{
+  border: 2px #A3B18A solid;
   width: auto;
   display: inline-block;
   margin: 1em;
   padding: 1em;
+  background-color: #F1F3F2;
 }
 
 button {
   margin-left: 1em;
+  background-color: #E76F51;
 }
 .danger-button{
   background-color: rgb(231, 66, 66);
-}
+} */

@@ -7,3 +7,20 @@
   <input type="password" [formControl]="signUpForm.controls.password_confirmation">
   <button type="submit" [disabled]="!signUpForm.valid">Sign Me Up!</button>
 </form>
+
+<h3>Credential Requirements</h3>
+<ul>
+  <li>
+    <p>Username must be between 5-15 characters</p>
+  </li>
+
+  <li>
+    <p>Password must be at least 8 characters</p>
+  </li>
+  <li>
+    <p>Your passwords must match</p>
+  </li>
+  <li>
+    <p>Your Username must be unique. If you are meeting all other requirements, try adjusting your username</p>
+  </li>
+</ul>
