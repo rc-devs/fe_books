@@ -49,7 +49,8 @@ export class BookListComponent implements OnInit{
     this.bookService.showBookByID(bookID).subscribe({
       next: (book) => this.books.set([book]),
       error: (err) => {
-        this.snackBar.open('Error fetching book: ' + err.message, 'Close', {duration: 5000});
+        this.snackBar.open('Error fetching book. Please try a different ID.', 'Close', {duration: 5000});
+        console.log(err.message)
       }
     });
     this.findSingleBookForm.reset();
