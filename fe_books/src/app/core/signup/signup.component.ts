@@ -27,8 +27,8 @@ export class SignupComponent {
         this.signUpForm.reset()
       },
       error: (error: any) => {
-        this.matSnackBar.open("There was some error during sign-up. Ensure your passwords are matching, and try again.", 'Close')
-        console.error('Sign up error', error)
+        this.matSnackBar.open("There was some error during sign-up. Refer to the Credential Requirements, and try again.", 'Close')
+        console.error('Sign up error', error.message)
       }
     })
   }
