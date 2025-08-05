@@ -12,7 +12,7 @@ export class AuthenticateService {
   constructor(private http: HttpClient, private router: Router ) {}
 
    signUp(username: string, password:string, password_confirmation:string){
-    return this.http.post('http://localhost:3000/users', {
+    return this.http.post('https://beta-blogs-evening-zzzl.onrender.com/users', {
       username,
       password, 
       password_confirmation
@@ -20,7 +20,7 @@ export class AuthenticateService {
   }
 
   login(username: string, password:string){
-    return this.http.post<{token: string}>('http://localhost:3000/login', {
+    return this.http.post<{token: string}>('https://beta-blogs-evening-zzzl.onrender.com/login', {
       username,
       password
     })
