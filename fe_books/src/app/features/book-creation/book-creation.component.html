@@ -9,6 +9,7 @@
       <option value="true">Yes</option>
       <option value="false">No</option>
     </select>
-    <input type="file" (change)="onFileSelected($event)" />
+    <label for="cover_image">Cover Image</label>
+    <input type="file" (change)="onFileSelected($event)" name="cover_image"/>
    <button type="submit" [disabled]="!newBook.valid">Submit</button>
   </form>
