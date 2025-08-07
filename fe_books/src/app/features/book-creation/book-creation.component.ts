@@ -15,11 +15,19 @@ export class BookCreationComponent {
   
   constructor(private bookService: BookService, private router:Router, private snackBar: MatSnackBar){}
 
+  selectedFile: File | null = null;
+
   newBook = new FormGroup({
     title: new FormControl("", Validators.required), 
     author: new FormControl("", Validators.required),
     read: new FormControl(false)
   });
+
+   onFileSelected(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      this.selectedFile = event.target.files[0];
+    }
+  };
 
   createHandler() {
       console.log('createhandler fires');
