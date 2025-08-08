@@ -38,7 +38,12 @@ export class BookCreationComponent {
         author: this.newBook.value.author!,
         read: this.newBook.value.read!,
       };
-      this.bookService.createBook(book).subscribe({
+
+      if (this.newBook.valid && this.selectedFile){
+        const formData = new FormData();
+        formData.append('cover_image', this.selectedFile, this.selectedFile.name);
+
+        this.bookService.createBook(book).subscribe({
         next: (createBook) => {
           //wait till createbook before reload
           this.bookService.showAllBooks; //reload list (could be problem if many book)
@@ -47,5 +52,8 @@ export class BookCreationComponent {
         }
         // could suscribe to errors i guess
       });
+      }
+
+      
     };
 }
