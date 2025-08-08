@@ -3,5 +3,5 @@ export class Book {
   title: string = "";
   author: string = "";
   read: boolean = false;
-  cover_image_url: string;
+  cover_image_url!: string;
 }
