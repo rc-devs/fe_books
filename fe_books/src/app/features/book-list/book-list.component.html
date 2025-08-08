@@ -19,6 +19,8 @@
     } @else {
     <p>Read Status: You have not read this book</p>
     }
+    <!-- the secret ingredient is crime -->
+    <img [src]="book.cover_image_url || 'https://bakerpublishinggroup.com/covers/original/missing.png'" alt="Book Cover">
     <button class="edit-button" (click)="selectBookForUpdate(b)">Update Book</button>
     <button class="danger-button" (click)="deleteHandler(b.id, b.title, b.author)" >Delete Book</button>
    </div>
