@@ -49,9 +49,11 @@ export class BookCreationComponent {
           this.bookService.showAllBooks; //reload list (could be problem if many book)
           this.newBook.reset(); //reset form
           this.snackBar.open(`${book.title} by ${book.author} has been successfully added to your list.`, 'Close', {duration: 5000})
-        }
-        // could suscribe to errors i guess
-      });
+        },
+        // suscribe to errors i guess
+        error: (error: any) => {
+          this.snackBar.open('Error creating book','Close', error); // no duration so user can see
+      }});
       }
 
       
