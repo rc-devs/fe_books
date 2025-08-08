@@ -12,7 +12,7 @@ export class BookService {
 
   private url = 'https://beta-blogs-evening-zzzl.onrender.com/books'
 
-  createBook(book: {title: string, author: string, read: boolean}): Observable<Book>{
+  createBook(book: FormData): Observable<Book>{
     return this.http.post<Book>(this.url, book)
   }
 

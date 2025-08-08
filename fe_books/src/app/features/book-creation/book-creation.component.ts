@@ -49,8 +49,11 @@ export class BookCreationComponent {
     if (this.newBook.valid && this.selectedFile) {
       const formData = new FormData();
       formData.append('cover_image', this.selectedFile, this.selectedFile.name);
+      formData.append('title', this.newBook.value.title!);
+      formData.append('author', this.newBook.value.author!);
+      formData.append('read', this.newBook.value.read!.toString());
 
-      this.bookService.createBook(book).subscribe({
+      this.bookService.createBook(formData).subscribe({
         next: (createBook) => {
           //wait till createbook before reload
           this.bookService.showAllBooks; //reload list (could be problem if many book)
