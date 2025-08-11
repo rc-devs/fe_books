@@ -40,11 +40,11 @@ export class BookCreationComponent {
     console.log('createhandler fires');
 
     //save form inputs for passage to methods
-    let book = {
+    /* let book = {
       title: this.newBook.value.title!,
       author: this.newBook.value.author!,
       read: this.newBook.value.read!,
-    };
+    }; */
 
     if (this.newBook.valid && this.selectedFile) {
       const formData = new FormData();
@@ -52,6 +52,7 @@ export class BookCreationComponent {
       formData.append('title', this.newBook.value.title!);
       formData.append('author', this.newBook.value.author!);
       formData.append('read', this.newBook.value.read!.toString());
+      console.log('formData in createhandler');
 
       this.bookService.createBook(formData).subscribe({
         next: (createBook) => {
@@ -59,7 +60,7 @@ export class BookCreationComponent {
           this.bookService.showAllBooks; //reload list (could be problem if many book)
           this.newBook.reset(); //reset form
           this.snackBar.open(
-            `${book.title} by ${book.author} has been successfully added to your list.`,
+            `${this.newBook.value.title} by ${this.newBook.value.author} has been successfully added to your list.`,
             'Close',
             { duration: 5000 }
           );
