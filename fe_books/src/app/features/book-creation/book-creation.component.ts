@@ -22,7 +22,7 @@ export class BookCreationComponent {
     private snackBar: MatSnackBar
   ) {}
 
-  selectedFile: File | null = null;
+  selectedFile?: File | null = null;
 
   newBook = new FormGroup({
     title: new FormControl('', Validators.required),
